@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Pet Profile | PawMatch</title>
+
+<link rel="icon" href="paw.jpg">
+<link rel="stylesheet" href="my-profile.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="navbar">
+    <div class="logo">🐾 PawMatch</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+
+        <a id="aboutLink" href="about.html">About</a>
+
+        <a id="discoverLink" href="discover.html">Discover</a>
+
+        <a id="matchesLink" href="matches.html">Matches</a>
+
+        <a id="messagesLink" href="messages.html">Messages</a>
+
+        <div id="profileIcon" class="profile-icon">
+            <img id="navProfileImage" src="paw.jpg" alt="profile">
+        </div>
+
+        <button id="logoutBtn">Logout</button>
+
+        <a id="loginLink" href="login.html" class="login-btn">
+            Sign in
+        </a>
+    </div>
+</div>
+
+<section class="profile-page">
+
+    <div class="profile-container">
+
+        <!-- Header -->
+        <div class="profile-header">
+
+            <div class="profile-cover"></div>
+            <div class="profile-image-wrapper">
+                <img
+                    src="paw.jpg" id="petImage" alt="Pet Image" >
+                <label for="imageInput" class="change-photo-btn">
+                    Change Photo
+                </label>
+                <input
+                    type="file" id="imageInput" accept="image/*" hidden>
+            </div>
+        </div>
+        <!-- Main Card -->
+        <div class="profile-card">
+            <!-- <div class="profile-title">
+                <h1 id="petName">
+                    Loading...
+                </h1>
+                <p id="petBreed">
+                    PawMatch Pet
+                </p>
+            </div> -->
+            <!-- Basic Information -->
+            <div class="section">
+                <h2>
+                    Basic Information
+                </h2>
+                <div class="info-grid">
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" id="name" disabled>
+                    </div>
+                    <div class="field">
+                        <label>Breed</label>
+                        <input type="text" id="breed" disabled>
+                    </div>
+                    <div class="field">
+                        <label>Age</label>
+                        <input type="number" id="age" disabled>
+                    </div>
+                    <div class="field">
+                        <label>Gender</label>
+                        <select
+                            id="gender"
+                            disabled
+                        >
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- Behavior -->
+            <div class="section">
+                <h2> Behavior </h2>
+                <div class="info-grid">
+                    <div class="field">
+                        <label>Temperament</label>
+                        <select
+                            id="temperament"
+                            disabled
+                        >
+                            <option>Friendly</option>
+                            <option>Aggressive</option>
+                            <option>Calm</option>
+                            <option>Playful</option>
+                            <option>Shy</option>
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Energy Level
+                        </label>
+
+                        <select
+                            id="energyLevel"
+                            disabled
+                        >
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Lifestyle -->
+
+            <div class="section">
+
+                <h2>
+                    Lifestyle
+                </h2>
+
+                <div class="info-grid">
+
+                    <div class="field">
+
+                        <label>
+                            Activity Level
+                        </label>
+
+                        <select
+                            id="activityLevel"
+                            disabled
+                        >
+                            <option>Indoor</option>
+                            <option>Outdoor</option>
+                            <option>Both</option>
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Diet
+                        </label>
+
+                        <input
+                            type="text"
+                            id="diet"
+                            disabled
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- About -->
+
+            <div class="section">
+
+                <h2>
+                    About My Pet
+                </h2>
+
+                <textarea
+                    id="adoptionReason"
+                    disabled
+                ></textarea>
+
+            </div>
+
+            <!-- Status -->
+
+            <div class="section">
+
+                <h2>
+                    Pet Details
+                </h2>
+
+                <div class="checkbox-grid">
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="trained"
+                            disabled
+                        >
+                        Trained
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="goodWithKids"
+                            disabled
+                        >
+                        Good With Kids
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="goodWithPets"
+                            disabled
+                        >
+                        Good With Pets
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="vaccinated"
+                            disabled
+                        >
+                        Vaccinated
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="button-group">
+
+                <button
+                    id="editBtn"
+                    class="edit-btn"
+                >
+                    Edit Profile
+                </button>
+
+                <button
+                    id="saveBtn"
+                    class="save-btn"
+                    style="display:none;"
+                >
+                    Save Changes
+                </button>
+
+                <button
+                    id="deleteBtn"
+                    class="delete-btn"
+                >
+                    Delete Profile
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-grid">
+
+            <div class="footer-col">
+                <h4>PawMatch</h4>
+                <p>
+                    Find friends for your furry companion.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <a href="discover.html">
+                    Discover
+                </a>
+                <a href="my-profile.html">
+                    My Profile
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy.html">
+                    Privacy
+                </a>
+                <a href="terms.html">
+                    Terms
+                </a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 PawMatch • Made with ❤️ for pet lovers
+        </div>
+
+    </div>
+
+</footer>
+  <script src="nav.js"></script>
+<script src="my-profile.js"></script>
+<script src="logout.js"></script>
+
+</body>
+</html>

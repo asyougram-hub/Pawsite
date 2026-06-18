@@ -1,0 +1,94 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+name="description"
+content="PawMatch helps pet owners find playdates, friends and companions for their pets.">
+     
+    <title>PawMatch - Sign Up</title> 
+    <link rel="icon" href="paw.jpg">
+    
+    <link rel="stylesheet" href="style.css"> 
+    </head> 
+    <body class="auth-page">
+        <main class="auth-wrapper">
+        <div class="container"> 
+        <div class="left-side"> 
+            <div class="overlay">
+            </div> 
+            <div class="slider">
+
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1000&auto=format&fit=crop"
+            class="slide">
+
+            <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?q=80&w=1000&auto=format&fit=crop"
+            class="slide">
+
+            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?q=80&w=1000&auto=format&fit=crop"
+            class="slide">
+
+        </div>
+            <div class="left-content"> 
+                <h1>🐾 PawMatch</h1> 
+                <p>Find Friends For Your Furry Buddy ❤️</p>                        
+            </div> 
+        </div> 
+        <div class="right-side"> 
+           <div class="form-box"> 
+                <div class="title"> 
+                    <h1>SIGN UP</h1>
+                    <p>Create your account</p> 
+                </div> 
+                <form id="signupForm" action=" https://petmatch-mu.vercel.app/api/auth/register" method="post"> 
+                    <label for="name">Full Name</label> 
+                    <input type="text" id="name" autocomplete="name" placeholder="Enter your name" required> 
+                    <label for="email">Email or Phone</label> 
+                    <input type="text" id="email" autocomplete="email" placeholder="Enter email " required> 
+                    <label for="password">Password</label> 
+                    <input type="password" id="password" autocomplete="new-password" placeholder="Enter password" required> 
+                   
+                    <button id="createBtn" type="submit">
+                    Create Account
+                    </button>
+                    <div id="errorMsg"></div>
+                </form> 
+                <div class="bottom-text"> Already have an account? 
+                    <a href="login.html">Login</a> 
+                </div> 
+            </div> 
+        </div> 
+    </div>
+    </main>
+    <footer class="auth-footer">
+    <div>
+      <h3>PawMatch</h3>
+      <p>Find friends for your furry companion.</p>
+    </div>
+
+    <div>
+      <h4>Product</h4>
+      <a href="index.html">Home</a>
+      <a href="discover.html">Features</a>
+      
+    </div>
+
+    <div>
+      <h4>Company</h4>
+      <a href="about.html">About Us</a>
+      
+    </div>
+
+    <div>
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      
+    </div>
+
+    <p class="footer-copy">© 2026 PawMatch • Made with ❤️ for pet lovers</p>
+  </footer>
+<script src="signup.js"></script>
+</body> 
+</html>

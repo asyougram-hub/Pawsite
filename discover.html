@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="description"
+content="PawMatch helps pet owners find playdates, friends and companions for their pets."> 
+ <title>PawMatch - Discover</title>
+  <link rel="stylesheet" href="discover.css" />
+  <link rel="icon" href="paw.jpg">
+</head>
+<body>
+  <div class="discover-page">
+    <aside class="filters">
+      <h2>PawMatch</h2>
+      <p>Find pets that match your pet's vibe.</p>
+
+      <label>Pet Type</label>
+      <select id="filterType">
+        <option value="any">Any</option>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+      </select>
+
+      <label>Energy</label>
+      <select id="filterEnergy">
+        <option value="any">Any</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <label>Personality</label>
+      <select id="filterPersonality">
+        <option value="any">Any</option>
+        <option value="Playful">Playful</option>
+        <option value="Calm">Calm</option>
+        <option value="Friendly">Friendly</option>
+        <option value="Shy">Shy</option>
+        <option value="Protective">Protective</option>
+        <option value="Social">Social</option>
+      </select>
+
+      <label>Looking For</label>
+      <select id="filterLooking">
+        <option value="any">Any</option>
+        <option value="Playdate">Playdate</option>
+        <option value="Walking Buddy">Walking Buddy</option>
+        <option value="Breeding Partner">Breeding Partner</option>
+        <option value="Adoption">Adoption</option>
+        <option value="Friendship">Friendship</option>
+      </select>
+
+      <button id="applyFilters">Find Matches</button>
+      <button id="resetFilters" class="secondary-btn">Reset</button>
+      <a href="index.html" class="home-link">Back to Home</a>
+    </aside>
+
+    <main class="discover-main">
+      <div class="top-bar">
+        <div>
+          <h1>Discover Pets</h1>
+          <p id="matchText">Swipe through pets near you.</p>
+        </div>
+      </div>
+
+      <section id="cardArea" class="card-area"></section>
+
+      <div class="actions">
+        <button id="passBtn" class="pass-btn">Pass</button>
+        <button id="likeBtn" class="like-btn">Like</button>
+      </div>
+    </main>
+  </div>
+  <div class="footer">
+  <div class="container" style="padding:0;">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>PawMatch</h4><p style="color:#b5a088;">Find friends for your furry companion</p><div style="margin-top:10px;">📲 <span style="font-weight:600;">iOS / Android</span></div></div>
+      <div class="footer-col"><h4>Product</h4><a href="index.html">Home</a><a href="discover.html">Features</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+    <div class="copyright">© 2026 PawMatch • Made with ❤️ for pet lovers</div>
+  </div>
+</div>
+  <script src="nav.js"></script>
+  <script src="discover.js"></script>
+  
+</body>
+</html>

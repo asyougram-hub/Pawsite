@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="description"
+content="PawMatch helps pet owners find playdates, friends and companions for their pets.">    
+<title>Profile</title>
+<link rel="icon" href="paw.jpg">    
+<link rel="stylesheet" href="profile.css">
+    
+<body>
+    
+
+<div class="pet-page">
+
+    <div class="pet-card">
+
+        <div class="title-section">
+            <h1>🐾 Create Pet Profile</h1>
+            <p>
+                Help your furry friend find companions,
+                playmates and meaningful connections.
+            </p>
+        </div>
+
+        <form id="petForm">
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Pet Name</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Breed</label>
+                    <input type="text" id="breed">
+                </div>
+
+                <div class="input-group">
+                    <label>Age(in years)</label>
+                    <input type="number" id="age" min="0" max="10" step="1">
+                </div>
+
+                <div class="input-group">
+                    <label>Pet Image </label>
+                    <input type="file" id="petImage" accept="image/*">
+                    <img
+                    id="imagePreview"
+                    src="paw.jpg"
+                    alt="Preview"
+                    class="image-preview">
+                </div>
+
+            </div>
+
+            <div class="radio-section">
+                <h3>Category</h3>
+
+                <label>
+                    <input type="radio" name="category" value="Dog" checked>
+                    🐶 Dog
+                </label>
+
+                <label>
+                    <input type="radio" name="category" value="Cat">
+                    🐱 Cat
+                </label>
+            </div>
+
+            <div class="radio-section">
+                <h3>Gender</h3>
+
+                <label>
+                    <input type="radio" name="gender" value="Male" checked>
+                    Male
+                </label>
+
+                <label>
+                    <input type="radio" name="gender" value="Female">
+                    Female
+                </label>
+            </div>
+
+            <div class="radio-section">
+                <h3>Temperament</h3>
+
+                <label><input type="radio" name="temperament" value="Friendly" checked> Friendly</label>
+                <label><input type="radio" name="temperament" value="Aggressive"> Aggressive</label>
+                <label><input type="radio" name="temperament" value="Calm"> Calm</label>
+                <label><input type="radio" name="temperament" value="Playful"> Playful</label>
+                <label><input type="radio" name="temperament" value="Shy"> Shy</label>
+            </div>
+
+            <div class="radio-section">
+                <h3>Energy Level</h3>
+
+                <label><input type="radio" name="energy" value="Low" > Low</label>
+                <label><input type="radio" name="energy" value="Medium" checked> Medium</label>
+                <label><input type="radio" name="energy" value="High"> High</label>
+            </div>
+
+            <div class="check-section">
+
+                <label>
+                    <input type="checkbox" id="trained">
+                    Trained
+                </label>
+
+                <label>
+                    <input type="checkbox" id="kids">
+                    Good With Kids
+                </label>
+
+                <label>
+                    <input type="checkbox" id="pets">
+                    Good With Other Pets
+                </label>
+
+                <label>
+                    <input type="checkbox" id="vaccinated">
+                    Vaccinated
+                </label>
+
+            </div>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Vaccination Details</label>
+                    <textarea id="vaccinationDetails"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Medical Issues</label>
+                    <textarea id="medicalIssues"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Allergies</label>
+                    <textarea id="allergies"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Diet</label>
+                    <textarea id="diet"></textarea>
+                </div>
+
+            </div>
+
+            <div class="radio-section">
+                <h3>Activity Level</h3>
+
+                <label><input type="radio" name="activity" value="Indoor"> Indoor</label>
+                <label><input type="radio" name="activity" value="Outdoor"> Outdoor</label>
+                <label><input type="radio" name="activity" value="Both" checked> Both</label>
+            </div>
+
+            <div class="input-group">
+                <label>Last Checkup</label>
+                <input type="date" id="lastCheckup">
+            </div>
+
+            <div class="input-group">
+                <label>Adoption Reason</label>
+                <textarea id="adoptionReason"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Create Profile 🐾
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+    <div class="footer">
+<div class="footer-container">
+        <div class="footer-grid">
+      <div class="footer-col"><h4>PawMatch</h4><p style="color:#b5a088;">Find friends for your furry companion</p><div style="margin-top:10px;">📲 <span style="font-weight:600;">iOS / Android</span></div></div>
+      <div class="footer-col"><h4>Product</h4><a href="index.html">Home</a><a href="discover.html">Features</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+    <div class="copyright">© 2026 PawMatch • Made with ❤️ for pet lovers</div>
+  </div>
+
+    <script src="profile.js"></script>
+    
+</body>
+</html>
