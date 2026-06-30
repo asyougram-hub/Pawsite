@@ -1,5 +1,5 @@
 const token =
-    localStorage.getItem("refreshToken");
+    localStorage.getItem("authToken");
 
 if (!token) {
     window.location.href = "login.html";
@@ -58,6 +58,8 @@ async function loadPets() {
 
       .map((pet) => ({
         id: pet._id,
+        ownerId: pet.ownerId?._id,
+        ownerName: pet.ownerId?.username,
 
         name: pet.name,
 
@@ -315,16 +317,16 @@ sessionStorage.setItem(
   )
 );
 
-filteredPets =
-  filteredPets.filter(
-    (p) => p.id !== pet.id
-  );
+// filteredPets =
+//   filteredPets.filter(
+//     (p) => p.id !== pet.id
+//   );
 
-demoPets =
-  demoPets.filter(
-    (p) => p.id !== pet.id
-  );
-
+// demoPets =
+//   demoPets.filter(
+//     (p) => p.id !== pet.id
+//   );
+currentIndex++;
 renderCurrentPet();
 
           } catch (error) {
@@ -359,13 +361,24 @@ likeBtn.addEventListener(
       const data = await response.json();
 
       console.log("LIKE STATUS:", response.status);
-      likedPets.push(pet.id);
+      const matches =
+  JSON.parse(
+    localStorage.getItem("matches")
+  ) || [];
 
-localStorage.setItem(
-  "likedPets",
-  JSON.stringify(likedPets)
-);
+const alreadyExists =
+  matches.some(
+    (m) => m.id === pet.id
+  );
 
+if (!alreadyExists) {
+  matches.push(pet);
+
+  localStorage.setItem(
+    "matches",
+    JSON.stringify(matches)
+  );
+}
 filteredPets =
   filteredPets.filter(
     (p) => p.id !== pet.id

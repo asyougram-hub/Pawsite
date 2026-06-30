@@ -1,14 +1,31 @@
 const token =
-    localStorage.getItem("refreshToken");
+    localStorage.getItem("authToken");
 
 if (!token) {
     window.location.href = "login.html";
 }
 const matchesGrid = document.getElementById("matchesGrid");
 
-const matches = JSON.parse(localStorage.getItem("matches")) || [];
 
-if (matches.length === 0) {
+
+async function loadMatches() {
+try {
+  const response = await fetch("https://petmatch-mu.vercel.app/api/match", {
+    method: "GET",
+     headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${token}`
+     },
+    });
+
+     let data;
+     try {
+        data = await response.json();
+    } catch (err) {
+     data = { message: "Invalid response from server" };
+    }
+    const matches=data.matches;
+    if (matches.length === 0) {
   matchesGrid.innerHTML = `
     <div class="match-card">
       <div class="match-info">
@@ -34,5 +51,14 @@ if (matches.length === 0) {
     `;
 
     matchesGrid.appendChild(card);
-  });
+  });}
+   console.log("", data.matches);
+   console.log("", data.matches[0]);
+   
+  }catch(err){
+    console.log(err);
+  }
+  
 }
+
+loadMatches();

@@ -1,5 +1,5 @@
 const token =
-    localStorage.getItem("refreshToken");
+    localStorage.getItem("authToken");
 
 if (!token) {
     window.location.href = "login.html";
@@ -22,6 +22,21 @@ function openChat(pet) {
     <div class="message received">Want to plan a pet playdate?</div>
   `;
 }
+function displayMessages(messages) {
+  chatBox.innerHTML = "";
+
+  messages.forEach(msg => {
+    const div = document.createElement("div");
+
+    div.className = msg.sender === "me"
+      ? "message sent"
+      : "message received";
+
+    div.textContent = msg.text;
+
+    chatBox.appendChild(div);
+  });
+}
 
 matches.forEach(function (pet) {
   const item = document.createElement("div");
@@ -35,19 +50,5 @@ matches.forEach(function (pet) {
   chatList.appendChild(item);
 });
 
-messageForm.addEventListener("submit", function (e) {
-  e.preventDefault();
 
-  if (!selectedPet) {
-    alert("Please select a match first.");
-    return;
-  }
 
-  const msg = document.createElement("div");
-  msg.className = "message sent";
-  msg.textContent = messageInput.value;
-
-  chatBox.appendChild(msg);
-  messageInput.value = "";
-  chatBox.scrollTop = chatBox.scrollHeight;
-});
