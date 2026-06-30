@@ -1,3 +1,10 @@
+const user = JSON.parse(localStorage.getItem("user"));
+const token = localStorage.getItem("refreshToken"); // or authToken if that's what you use
+
+if (!user || !token) {
+    alert("Please sign in first to create a pet profile.");
+    window.location.href = "login.html";
+}
 const form = document.getElementById("petForm");
 
 const imageInput = document.getElementById("petImage");

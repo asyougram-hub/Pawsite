@@ -925,83 +925,82 @@ button{
   const myPetCard = document.getElementById("myPetCard");
 
   // ==================== LOAD PET PROFILE ====================
-  function loadPetProfile() {
-    const savedPet = JSON.parse(localStorage.getItem("petProfile"));
+  // function loadPetProfile() {
+  // //  const savedPet = JSON.parse(localStorage.getItem("petProfile"));
 
-    if (savedPet && myPetCard) {
-      myPetCard.innerHTML = `
-        <h3>${savedPet.petName}, ${savedPet.petAge}y</h3>
-        <p>${savedPet.petBreed} • ${savedPet.petType}</p>
+  //   if (savedPet && myPetCard) {
+  //     myPetCard.innerHTML = `
+  //       <h3>${savedPet.petName}, ${savedPet.petAge}y</h3>
+  //       <p>${savedPet.petBreed} • ${savedPet.petType}</p>
         
-        <div class="pet-tags">
-          <span>${savedPet.personality || 'Friendly'}</span>
-          <span>${savedPet.location || 'Nearby'}</span>
-        </div>
+  //       <div class="pet-tags">
+  //         <span>${savedPet.personality || 'Friendly'}</span>
+  //         <span>${savedPet.location || 'Nearby'}</span>
+  //       </div>
 
-        <a href="discover.html" style="background:white; color:#ff5d73; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:700; display:inline-block; margin-top:12px;">
-          Find Matches →
-        </a>
-      `;
-    } else if (myPetCard) {
-      myPetCard.innerHTML = `
-        <h3>No pet profile yet</h3>
-        <p>Create your pet profile to start matching.</p>
-        <a href="profile.html" style="background:white; color:#ff5d73; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:700; display:inline-block;">
-          Create Profile
-        </a>
-      `;
-    }
+  //       <a href="discover.html" style="background:white; color:#ff5d73; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:700; display:inline-block; margin-top:12px;">
+  //         Find Matches →
+  //       </a>
+  //     `;
+  //   } else if (myPetCard) {
+  //     myPetCard.innerHTML = `
+  //       <h3>No pet profile yet</h3>
+  //       <p>Create your pet profile to start matching.</p>
+  //       <a href="profile.html" style="background:white; color:#ff5d73; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:700; display:inline-block;">
+  //         Create Profile
+  //       </a>
+  //     `;
+  //   }
 
-  }
+  // }
     // ==================== mypetcard backend connection ====================
 
   async function loadHomePetCard() {
+    const card = document.getElementById("myPetCard");
 
-    const user = JSON.parse(
-        localStorage.getItem("user")
-    );
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!user) return;
+    // STEP 1: Not logged in
+    if (!user) {
+        card.innerHTML = `
+            <h3>Sign in required</h3>
+            <p>Please sign in to create your pet profile.</p>
+            <a href="login.html">Sign In</a>
+        `;
+        return;
+    }
 
     try {
-
-        const response = await fetch(
-            "https://petmatch-mu.vercel.app/api/pet"
-        );
-
+        const response = await fetch("https://petmatch-mu.vercel.app/api/pet");
         const data = await response.json();
 
         const myPet = data.pets.find(
-            pet =>
-                pet.ownerId &&
-                pet.ownerId._id === user._id
+            pet => pet.ownerId && pet.ownerId._id === user._id
         );
 
-        if (!myPet) return;
+        // STEP 2: Logged in but no pet profile
+        if (!myPet) {
+            card.innerHTML = `
+                <h3>No pet profile yet</h3>
+                <p>Create your pet profile to start matching.</p>
+                <a href="profile.html">Create Profile</a>
+            `;
+            return;
+        }
 
-        const card =
-            document.getElementById("myPetCard");
-
+        // STEP 3: Pet profile exists
         card.innerHTML = `
-            <img
-                src="${myPet.image || 'paw.jpg'}"
-                alt="${myPet.name}"
-                class="home-pet-image"
-            >
+            <img src="${myPet.image || 'paw.jpg'}" class="home-pet-image">
 
             <h3>${myPet.name}</h3>
 
-            <p>
-                ${myPet.breed || "Unknown Breed"}
-            </p>
+            <p>${myPet.breed || "Unknown Breed"}</p>
 
-            <a href="my-profile.html">
-                View Profile
-            </a>
+            <a href="my-profile.html">View Profile</a>
         `;
 
-    } catch (error) {
-        console.error(error);
+    } catch (err) {
+        console.error(err);
     }
 }
 
@@ -1114,10 +1113,10 @@ console.log("Search button clicked");
   });
 
   // Initialize everything when page loads
-  window.addEventListener('load', () => {
-    loadPetProfile();
+  window.addEventListener("load", () => {
+    loadHomePetCard();
     renderPetCards();
-  });
+});
   const isLoggedIn = localStorage.getItem("refreshToken");
 
 const loginLink = document.getElementById("loginLink");
