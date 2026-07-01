@@ -9,9 +9,17 @@
     
 }
 
-    body{
-      background: #fffaf7;
-      color: #333;
+   body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, #fff8f2, #ffe6ec);
+  color: #2c241f;
+  min-height: 100vh;
+}
+/* container system */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
     .about-header{
       min-height: 100vh;
@@ -416,7 +424,6 @@ button{
         flex:1;
     }
 }
-/* new */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -427,12 +434,14 @@ button{
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    /* background: linear-gradient(135deg,#ff6b6b,#ff8e53); */
-
-    color: linear-gradient(135deg,#ff6b6b,#ff8e53);
-}
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
 
 .nav-links {
     display: flex;
@@ -444,6 +453,7 @@ button{
     text-decoration: none;
     color: #4a3b32;
     font-weight: 500;
+    transition: color 0.2s;
 }
 
 .nav-links a:hover {

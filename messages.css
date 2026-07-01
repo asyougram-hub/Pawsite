@@ -9,7 +9,7 @@ html,body{
 }
 
 body {
-font-family: 'Poppins', sans-serif;
+font-family: 'Inter', system-ui, sans-serif;
   background: #fff8f2;
   color: #2c241f;
 }
@@ -264,6 +264,12 @@ button{
   }
 
 }
+/* container system */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -277,7 +283,10 @@ button{
     font-size: 1.8rem;
     font-weight: 800;
     background: linear-gradient(135deg,#ff6b6b,#ff8e53);
-    color: transparent;
+    -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
 }
 
 .nav-links {
@@ -290,6 +299,7 @@ button{
     text-decoration: none;
     color: #4a3b32;
     font-weight: 500;
+    transition: color 0.2s;
 }
 
 .nav-links a:hover {

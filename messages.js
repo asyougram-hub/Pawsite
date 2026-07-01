@@ -1,5 +1,12 @@
-const token =
-    localStorage.getItem("authToken");
+const API_URL = "https://petmatch-chat.onrender.com";
+const socket = io(API_URL);
+
+const token =localStorage.getItem("authToken");
+
+const payload = JSON.parse(atob(token.split(".")[1]));
+const currentUserId = payload.id;  
+
+socket.emit("join", currentUserId);
 
 if (!token) {
     window.location.href = "login.html";
@@ -10,17 +17,14 @@ const chatBox = document.getElementById("chatBox");
 const messageForm = document.getElementById("messageForm");
 const messageInput = document.getElementById("messageInput");
 
-const matches = JSON.parse(localStorage.getItem("matches")) || [];
+// const matches = JSON.parse(localStorage.getItem("matches")) || [];
 let selectedPet = null;
 
-function openChat(pet) {
-  selectedPet = pet;
-  chatName.textContent = pet.name;
-
-  chatBox.innerHTML = `
-    <div class="message received">Hi! I am ${pet.name}. Nice to meet you.</div>
-    <div class="message received">Want to plan a pet playdate?</div>
-  `;
+async function openChat(pet) {
+  selectedPet=pet;
+  chatName.textContent=pet.name;
+  await loadMessages(pet.currentUserId);
+  
 }
 function displayMessages(messages) {
   chatBox.innerHTML = "";

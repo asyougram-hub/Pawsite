@@ -9,31 +9,17 @@ html,body{
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background: linear-gradient(135deg, #fff8f2, #ffe6ec);
   color: #2c241f;
   min-height: 100vh;
 }
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 50px;
-  background: white;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-}
-
-nav h2 {
-  color: #ff5d73;
-}
-
-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #2c241f;
-  font-weight: bold;
-}
+/* container system */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
 main {
   padding: 40px;
@@ -232,11 +218,14 @@ button{
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    /* background: linear-gradient(135deg,#ff6b6b,#ff8e53); */
-    color: linear-gradient(135deg,#ff6b6b,#ff8e53);
-}
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
 
 .nav-links {
     display: flex;
@@ -248,6 +237,7 @@ button{
     text-decoration: none;
     color: #4a3b32;
     font-weight: 500;
+    transition: color 0.2s;
 }
 
 .nav-links a:hover {

@@ -39,3 +39,28 @@ if (isLoggedIn) {
     });
 
 }
+
+async function loadNavbarPetImage() {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (!user) return;
+
+  try {
+    const response = await fetch("https://petmatch-mu.vercel.app/api/pet");
+    const data = await response.json();
+
+    const myPet = data.pets.find(
+      pet => pet.ownerId?._id === user._id
+    );
+
+    const img = document.getElementById("navProfileImage");
+
+    if (img && myPet?.image) {
+      img.src = myPet.image;
+    }
+  } catch (err) {
+    console.error("Error loading navbar pet image:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadNavbarPetImage);

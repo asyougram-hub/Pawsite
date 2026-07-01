@@ -10,11 +10,16 @@ html,body{
 
 body {
   min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background: linear-gradient(135deg, #fff8f2, #ffe6ec);
   color: #2c241f;
 }
-
+/* container system */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 .discover-page {
   min-height: 100vh;
   display: grid;
