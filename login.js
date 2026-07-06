@@ -80,6 +80,8 @@ loginForm.addEventListener("submit", async function(e) {
 
                 if (data.user) {
                     localStorage.setItem("user", JSON.stringify(data.user));
+
+                    localStorage.setItem("myUserId", data.user._id);
                 }
                 console.log(
                     "Token Saved:",

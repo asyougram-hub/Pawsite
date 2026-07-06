@@ -3,40 +3,38 @@ const socket = io(API_URL);
 
 const token =localStorage.getItem("authToken");
 
-const payload = JSON.parse(atob(token.split(".")[1]));
-const currentUserId = payload.id;  
+const currentUserId = localStorage.getItem("myUserId");
+const otherUserId = localStorage.getItem("otherUserId");
 
-socket.emit("join", currentUserId);
+const selectedPet = JSON.parse(localStorage.getItem("selectedPet"));
 
 if (!token) {
     window.location.href = "login.html";
-}
+} 
+
+socket.emit("join", currentUserId);
+
 const chatList = document.getElementById("chatList");
 const chatName = document.getElementById("chatName");
 const chatBox = document.getElementById("chatBox");
 const messageForm = document.getElementById("messageForm");
 const messageInput = document.getElementById("messageInput");
 
-// const matches = JSON.parse(localStorage.getItem("matches")) || [];
-let selectedPet = null;
+chatName.textContent = selectedPet.name;
 
-async function openChat(pet) {
-  selectedPet=pet;
-  chatName.textContent=pet.name;
-  await loadMessages(pet.currentUserId);
-  
-}
+loadMessages();
+
 function displayMessages(messages) {
   chatBox.innerHTML = "";
 
   messages.forEach(msg => {
     const div = document.createElement("div");
 
-    div.className = msg.sender === "me"
+    div.className = msg.sender === currentUserId
       ? "message sent"
       : "message received";
 
-    div.textContent = msg.text;
+    div.textContent = msg.text || msg.message;
 
     chatBox.appendChild(div);
   });
@@ -54,5 +52,28 @@ matches.forEach(function (pet) {
   chatList.appendChild(item);
 });
 
+async function loadMessages() {
+    try {
+
+        const response = await fetch(
+            `${API_URL}/api/messages/${otherUserId}`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        console.log("Messages:", data);
+
+        displayMessages(data);
+
+    } catch (err) {
+        console.error(err);
+    }
+}
 
 
