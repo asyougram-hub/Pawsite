@@ -911,7 +911,7 @@ button{
 <div id="toastMsg" class="like-toast">🐾 Demo: You liked a pet! (mock match simulation)</div>
 
 <script>
-  
+  console.log("JS Loaded");
   // ==================== SAMPLE PETS ====================
   const pets = [
     { name: "Luna", age: "1y", breed: "Golden Retriever", type: "dog", distance: "2 km away", match: "98%", imgUrl: "goldenretriever.jpg"},
@@ -1125,7 +1125,21 @@ const messagesLink= document.getElementById("messagesLink");
 const discoverLink = document.getElementById("discoverLink");
 const matchesLink = document.getElementById("matchesLink");
 const profileIcon = document.getElementById("profileIcon");
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(".btn-primary").addEventListener("click", () => {
+        const token = localStorage.getItem("authToken");
 
+        if (!token) {
+            window.location.href = "login.html";
+        } else {
+            window.location.href = "discover.html";
+        }
+    });
+
+    document.querySelector(".btn-secondary").addEventListener("click", () => {
+        window.location.href = "about.html";
+    });
+});
 if (isLoggedIn) {
     loginLink.style.display = "none";
     aboutLink.style.display = "none";
@@ -1142,16 +1156,7 @@ if (isLoggedIn) {
     window.location.href = "my-profile.html";
     
 });
-document.querySelector(".btn-primary").addEventListener("click", () => {
 
-    const token = localStorage.getItem("authToken");
-
-    if (!token) {
-        window.location.href = "signup.html";
-    } else {
-        window.location.href = "discover.html";
-    }
-});
 
 }
 </script>

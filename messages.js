@@ -1,9 +1,12 @@
 const API_URL = "https://petmatch-chat.onrender.com";
-const socket = io(API_URL);
+const token = localStorage.getItem("authToken");
 
-const token =localStorage.getItem("authToken");
+const socket = io(API_URL, {
+    auth: {
+        token: token
+    }
+});
 
-const currentUserId = localStorage.getItem("myUserId");
 const otherUserId = localStorage.getItem("otherUserId");
 
 const selectedPet = JSON.parse(localStorage.getItem("selectedPet"));
@@ -11,8 +14,6 @@ const selectedPet = JSON.parse(localStorage.getItem("selectedPet"));
 if (!token) {
     window.location.href = "login.html";
 } 
-
-socket.emit("join", currentUserId);
 
 const chatList = document.getElementById("chatList");
 const chatName = document.getElementById("chatName");
@@ -50,6 +51,36 @@ matches.forEach(function (pet) {
   });
 
   chatList.appendChild(item);
+});
+
+messageForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const message = messageInput.value.trim();
+
+    if (!message) return;
+
+    socket.emit("sendMessage", {
+        receiver: otherUserId,
+        text: message
+    });
+
+    messageInput.value = "";
+});
+
+socket.on("newMessage", (message) => {
+    const div = document.createElement("div");
+
+    div.className =
+        message.sender === otherUserId
+            ? "message received"
+            : "message sent";
+
+    div.textContent = message.text;
+
+    chatBox.appendChild(div);
+
+    chatBox.scrollTop = chatBox.scrollHeight;
 });
 
 async function loadMessages() {

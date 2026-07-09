@@ -169,7 +169,22 @@
     min-width: 140px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
+#logoutBtn{
+    background: #fdc3c3;
+    color: #d85f5f;
+    border: 1px solid #f2aaaa;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
 
+#logoutBtn:hover{
+    background: #f7b3b3;
+    transform: translateY(-2px);
+
+    opacity:.9;
+}
 /* FEATURES */
 
 .features-section{
